@@ -129,19 +129,26 @@ class MainActivity : ComponentActivity() {
                                 .weight(1f)
                         ) { index ->
                             Box(
-                                modifier = Modifier.fillMaxSize().padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(start = 20.dp, end = 20.dp),
                                 contentAlignment = Alignment.Center,
                             ) {
-                                if(index == 0) {
-
-                                    Column(verticalArrangement = Arrangement.SpaceBetween) {
-
-                                        InsuranceBox(title = "Insurance Type", payment = BootStrapData.payment)
-                                        Spacer(modifier = Modifier.fillMaxWidth().height(50.dp))
+                                when (index) {
+                                    0 -> Column(verticalArrangement = Arrangement.SpaceBetween) {
+                                        InsuranceBox(
+                                            title = "Insurance Type",
+                                            payment = BootStrapData.payment7
+                                        )
+                                        Spacer(modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(50.dp))
                                         PaidHistory(list = BootStrapData.list)
                                     }
 
+                                    else -> Column() {}
                                 }
+
 
                             }
                         }

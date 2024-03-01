@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -37,7 +38,7 @@ fun InsuranceBox(
     val totalDays = ChronoUnit.DAYS.between(payment.startDate, payment.dueDate)
 
     val progress = daysBetweenStartAndCurrent.toDouble() / totalDays.toDouble()
-    val remainingMonths = payment.dueDate.monthValue - payment.currentDate.monthValue
+    val remainingDays = payment.dueDate.dayOfMonth - payment.currentDate.dayOfMonth
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
@@ -56,15 +57,16 @@ fun InsuranceBox(
             Spacer(modifier = Modifier.height(10.dp))
 
             Text(text = "Date: $formattedStartDate")
-            Row {
+            Row(horizontalArrangement = Arrangement.Center) {
                 LinearProgressIndicator(
                     progress = progress.toFloat(),
                     modifier = Modifier
                         .padding(top = 16.dp, bottom = 16.dp, end = 16.dp)
+                        .width(200.dp)
                 )
                 Column {
                     Text(text = "Remaining")
-                    Text(text = "$remainingMonths months")
+                    Text(text = "$remainingDays days")
                 }
             }
 
