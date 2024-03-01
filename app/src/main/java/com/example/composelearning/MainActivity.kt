@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,7 +34,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composelearning.data.BootStrapData
 import com.example.composelearning.ui.theme.ComposeLearningTheme
+import com.example.composelearning.widgets.InsuranceBox
+import com.example.composelearning.widgets.PaidHistory
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -125,10 +129,20 @@ class MainActivity : ComponentActivity() {
                                 .weight(1f)
                         ) { index ->
                             Box(
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier.fillMaxSize().padding(start = 20.dp, end = 20.dp),
                                 contentAlignment = Alignment.Center,
                             ) {
-                                Text(text = bankList[index])
+                                if(index == 0) {
+
+                                    Column(verticalArrangement = Arrangement.SpaceBetween) {
+
+                                        InsuranceBox(title = "Insurance Type", payment = BootStrapData.payment)
+                                        Spacer(modifier = Modifier.fillMaxWidth().height(50.dp))
+                                        PaidHistory(list = BootStrapData.list)
+                                    }
+
+                                }
+
                             }
                         }
 

@@ -1,7 +1,6 @@
 package com.example.composelearning.data
 
 import java.time.LocalDate
-import java.util.Date
 
 data class Payment(
     val id: Int,

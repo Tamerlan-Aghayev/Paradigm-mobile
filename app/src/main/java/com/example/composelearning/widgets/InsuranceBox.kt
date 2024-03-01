@@ -10,9 +10,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,7 +42,7 @@ fun InsuranceBox(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
             .height(IntrinsicSize.Min)
-            .width(IntrinsicSize.Min)
+            .fillMaxWidth()
             .background(Color.Black)
             .padding(16.dp)
     ) {
@@ -63,14 +63,19 @@ fun InsuranceBox(
                         .padding(top = 16.dp, bottom = 16.dp, end = 16.dp)
                 )
                 Column {
-                    Text(text = "Remains")
-                    Text(text = "${remainingMonths}months")
+                    Text(text = "Remaining")
+                    Text(text = "$remainingMonths months")
                 }
             }
 
             Row(horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(text = "Due: $formattedDueDate")
-                Text(text = "${payment.paymentAmount}\$")
+                Spacer(modifier = Modifier.weight(1.0F))
+
+                Column {
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(text = "${payment.paymentAmount}\u20BC", fontSize = 25.sp)
+                }
             }
             Spacer(modifier = Modifier.height(10.dp))
             Button(
@@ -78,9 +83,12 @@ fun InsuranceBox(
                 shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(60.dp)
+                    .height(60.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.DarkGray
+                )
             ) {
-                Text("Pay Now")
+                Text("Pay Now", color = Color.White, fontSize = 20.sp)
             }
         }
 
