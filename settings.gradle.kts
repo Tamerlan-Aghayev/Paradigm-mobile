@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Compose Learning"
+rootProject.name = "ADA Hackathon "
 include(":app")
  
