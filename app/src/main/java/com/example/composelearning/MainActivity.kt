@@ -36,6 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composelearning.data.BootStrapData
 import com.example.composelearning.ui.theme.ComposeLearningTheme
+import com.example.composelearning.widgets.CheckupHistory
+import com.example.composelearning.widgets.ExpandableDropdown
 import com.example.composelearning.widgets.InsuranceBox
 import com.example.composelearning.widgets.PaidHistory
 
@@ -143,10 +145,11 @@ class MainActivity : ComponentActivity() {
                                         Spacer(modifier = Modifier
                                             .fillMaxWidth()
                                             .height(50.dp))
-                                        PaidHistory(list = BootStrapData.list)
+                                        PaidHistory(list = BootStrapData.paymentList)
                                     }
 
-                                    else -> Column() {}
+                                    1 -> CheckupHistory(BootStrapData.checkUpList)
+
                                 }
 
 
