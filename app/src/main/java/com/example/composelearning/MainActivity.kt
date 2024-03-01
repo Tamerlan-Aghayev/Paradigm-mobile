@@ -1,6 +1,7 @@
 package com.example.composelearning
 
 import android.os.Bundle
+import android.provider.ContactsContract.Profile
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -40,6 +41,7 @@ import com.example.composelearning.widgets.CheckupHistory
 import com.example.composelearning.widgets.ExpandableDropdown
 import com.example.composelearning.widgets.InsuranceBox
 import com.example.composelearning.widgets.PaidHistory
+import com.example.composelearning.widgets.Profile
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -134,7 +136,7 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .padding(start = 20.dp, end = 20.dp),
-                                contentAlignment = Alignment.Center,
+                                contentAlignment = Alignment.TopStart,
                             ) {
                                 when (index) {
                                     0 -> Column(verticalArrangement = Arrangement.SpaceBetween) {
@@ -150,6 +152,9 @@ class MainActivity : ComponentActivity() {
 
                                     1 -> CheckupHistory(BootStrapData.checkUpList)
 
+                                    2 -> Column(verticalArrangement = Arrangement.Top) {
+                                        Profile(BootStrapData.azim)
+                                    }
                                 }
 
 
